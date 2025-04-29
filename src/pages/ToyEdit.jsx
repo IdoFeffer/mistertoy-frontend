@@ -15,15 +15,12 @@ export function ToyEdit() {
   const setHasUnsavedChanges = useConfirmTabClose()
 
   useEffect(() => {
-    console.log('Trying to load toy with ID:', toyId)
-
     if (toyId) loadToy()
   }, [toyId])
 
   function loadToy() {
     toyService.getById(toyId)
       .then(toy => {
-        console.log('Found toy:', toy)
         setToyToEdit(toy)
       })
       .catch(err => {
@@ -32,7 +29,6 @@ export function ToyEdit() {
       })
   }
   
-
   function handleChange({ target }) {
     let { value, type, name: field } = target
     if (type === "number") value = +value
