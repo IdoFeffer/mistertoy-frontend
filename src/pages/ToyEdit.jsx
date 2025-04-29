@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { toyService } from "../services/toy.service.js"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { toyService } from "../services/toy.service-local.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
-import { Link, useNavigate, useParams } from "react-router-dom"
 import { useOnlineStatus } from "../hooks/useOnlineStatus.js"
 import { useConfirmTabClose } from "../hooks/useConfirmTabClose.js"
 
@@ -15,18 +15,23 @@ export function ToyEdit() {
   const setHasUnsavedChanges = useConfirmTabClose()
 
   useEffect(() => {
+    console.log('Trying to load toy with ID:', toyId)
+
     if (toyId) loadToy()
-  }, [])
+  }, [toyId])
 
   function loadToy() {
-    toyService
-      .getById(toyId)
-      .then((toy) => setToyToEdit(toy))
-      .catch((err) => {
-        console.log("Had issues in toy edit", err)
-        navigate("/toy")
+    toyService.getById(toyId)
+      .then(toy => {
+        console.log('Found toy:', toy)
+        setToyToEdit(toy)
+      })
+      .catch(err => {
+        console.log('Had issues in toy edit', err)
+        navigate('/toy')
       })
   }
+  
 
   function handleChange({ target }) {
     let { value, type, name: field } = target

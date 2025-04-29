@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { Provider } from 'react-redux'
 
 import { ToyIndex } from './pages/ToyIndex.jsx'
+import { ToyEdit } from './pages/ToyEdit.jsx'
+import { ToyDetails } from './pages/ToyDetails.jsx'
+import { UserDetails } from './pages/UserDetails.jsx'
+
 import { store } from './store/store.js'
 
 export default function App() {
@@ -13,8 +17,12 @@ export default function App() {
         <section className="app full main-layout">
           <main>
             <Routes>
-              <Route path="/" element={<Navigate to="/toy" />} />
               <Route path="/toy" element={<ToyIndex />} />
+              <Route path="/toy/edit" element={<ToyEdit />} />
+              <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
+              <Route path="/toy/:toyId" element={<ToyDetails />} />
+              <Route path="/user/:userId" element={<UserDetails />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
         </section>
