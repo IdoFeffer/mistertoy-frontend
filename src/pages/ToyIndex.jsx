@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToyList } from '../cmps/ToyList.jsx'
 import { toyService } from '../services/toy.service-local.js'
+import { Accordion } from '../cmps/Accordion.jsx'
+
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
 import { ADD_TOY_TO_CART } from '../store/reducers/toy.reducer.js'
@@ -68,6 +70,7 @@ export function ToyIndex() {
 
     return (
         <div className="toy-index">
+            <Accordion />
             <h3>MisterToy - Toy List</h3>
             <main>
                 <Link to="/toy/edit">Add Toy</Link>

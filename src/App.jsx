@@ -7,9 +7,11 @@ import {
   Navigate,
 } from "react-router-dom"
 
-// import { AppFooter } from "./cmps/AppFooter.jsx"
+import { AppHeader } from "./cmps/AppHeader.jsx"
+import { AppFooter } from "./cmps/AppFooter.jsx"
 
 import { HomePage } from "./pages/HomePage.jsx"
+import { AboutUs } from "./pages/AboutUs.jsx"
 import { ToyIndex } from "./pages/ToyIndex.jsx"
 import { ToyEdit } from "./pages/ToyEdit.jsx"
 import { ToyDetails } from "./pages/ToyDetails.jsx"
@@ -24,8 +26,10 @@ export default function App() {
       <Router>
         <section className="app full main-layout">
           <main>
+            <AppHeader />
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutUs />} />
               <Route path="/toy" element={<ToyIndex />} />
               <Route path="/toy/edit" element={<ToyEdit />} />
               <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
@@ -34,6 +38,7 @@ export default function App() {
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
+          <AppFooter />
         </section>
       </Router>
     </Provider>
