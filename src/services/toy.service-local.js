@@ -4,7 +4,7 @@ import { storageService } from "./async-storage.service.js"
 
 const STORAGE_KEY = "toyDB"
 
-_createToys()
+// _createToys()
 
 export const toyService = {
   query,
