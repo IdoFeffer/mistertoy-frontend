@@ -10,7 +10,6 @@ export function ToyEdit() {
   const navigate = useNavigate()
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
   const { toyId } = useParams()
-
   const isOnline = useOnlineStatus()
   const setHasUnsavedChanges = useConfirmTabClose()
 
@@ -39,10 +38,13 @@ export function ToyEdit() {
 
   function onSaveToy(ev) {
     ev.preventDefault()
+
     if (!toyToEdit.price) toyToEdit.price = 100
+    
     saveToy(toyToEdit)
       .then(() => {
         showSuccessMsg("Toy saved!")
+        setHasUnsavedChanges(false)
         navigate("/toy")
       })
       .catch((err) => {
