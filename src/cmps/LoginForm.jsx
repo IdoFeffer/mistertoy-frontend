@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { userService } from "../services/user.service-local.js"
+import { userService } from "../services/user.service.js"
 
 
 export function LoginForm({ onLogin, isSignup }) {

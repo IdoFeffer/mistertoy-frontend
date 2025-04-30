@@ -1,14 +1,23 @@
 .toy-preview {
-    text-align: center;
-    padding: 0.3em;
-    display: flex;
-    flex-direction: column;
+  text-align: center;
+  padding: 0.3em;
+  display: flex;
+  flex-direction: column;
 }
-.toy-preview h4{
-    text-transform: capitalize;
-    color: black;
+.toy-preview h4 {
+  text-transform: capitalize;
+  color: black;
 }
 
 .toy-preview img {
-    max-width: 100px;
+  max-width: 100px;
+}
+
+ul:has(li:hover) li:not(:hover) {
+  scale: 0.9;
+  opacity: 0.6;
+}
+
+ul > li {
+  transition: 400ms;
 }
