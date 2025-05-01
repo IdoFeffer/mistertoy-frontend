@@ -28,7 +28,7 @@ export function ToyDetails() {
 
   return (
     <section className="toy-details">
-      <h1>Toy Name: {toy.name}</h1>
+      <h1>{toy.toyName}</h1>
       <h5 className="price">Price: ${toy.price}</h5>
       <p>🧸</p>
       <p>In Stock: {toy.inStock ? "Yes" : "No"}</p>

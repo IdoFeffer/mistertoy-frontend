@@ -1,4 +1,13 @@
 .toy-filter {
     background-color: var(--clr2bg);
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+.filter-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

@@ -33,9 +33,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
   return (
     <section className="toy-filter full main-layout">
-      <h2>Toys Filter</h2>
 
-      <form>
+      <fieldset className="filter-form">
+      <legend>Toys Filter</legend>
         {/* By name */}
         <label htmlFor="name">Name:</label>
         <input
@@ -106,7 +106,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
           <option value="price">Price</option>
           <option value="createdAt">Created At</option>
         </select>
-      </form>
+      </fieldset>
     </section>
   )
 }

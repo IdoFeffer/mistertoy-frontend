@@ -104,8 +104,9 @@ function getRandomToy() {
     "Battery Powered",
   ]
   return {
-    name: "Toy-" + (Date.now() % 1000),
+    toyName: "Toy-" + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(10, 300),
+    imgUrl: 'https://robohash.org/' + utilService.makeId(),
     labels: utilService.getRandomLabels(labels),
     inStock: Math.random() > 0.3,
     createdAt: Date.now(),

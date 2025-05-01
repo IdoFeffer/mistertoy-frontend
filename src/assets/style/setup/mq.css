@@ -1,0 +1,16 @@
+@media (max-width: 640px) {
+  .toy-filter form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .toy-filter input,
+  .toy-filter select {
+    width: 100%;
+  }
+
+  .toy-filter label {
+    font-size: 0.9rem;
+  }
+}

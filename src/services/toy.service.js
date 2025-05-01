@@ -11,6 +11,7 @@ export const toyService = {
   getDefaultFilter,
   _setNextPrevToyId,
   getEmptyToy,
+  getRandomToy
 }
 
 function query(filterBy = {}) {
@@ -57,10 +58,31 @@ function _setNextPrevToyId(toy) {
 
 function getEmptyToy() {
   return {
-    name: "",
+    toyName: "",
     price: "",
     labels: [],
     inStock: true,
+    createdAt: Date.now(),
+  }
+}
+
+function getRandomToy() {
+  const labels = [
+    "On wheels",
+    "Box game",
+    "Art",
+    "Baby",
+    "Doll",
+    "Puzzle",
+    "Outdoor",
+    "Battery Powered",
+  ]
+  return {
+    toyName: "Toy-" + (Date.now() % 1000),
+    price: utilService.getRandomIntInclusive(10, 300),
+    imgUrl: 'https://robohash.org/' + utilService.makeId(),
+    labels: utilService.getRandomLabels(labels),
+    inStock: Math.random() > 0.3,
     createdAt: Date.now(),
   }
 }
