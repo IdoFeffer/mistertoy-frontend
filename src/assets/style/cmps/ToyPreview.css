@@ -1,23 +1,61 @@
-.toy-preview {
-  text-align: center;
-  padding: 0.3em;
-  display: flex;
-  flex-direction: column;
-}
-.toy-preview h4 {
-  text-transform: capitalize;
-  color: black;
-}
-
-.toy-preview img {
-  max-width: 100px;
+ul > li {
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 ul:has(li:hover) li:not(:hover) {
-  scale: 0.9;
+  transform: scale(0.9);
   opacity: 0.6;
 }
 
-ul > li {
-  transition: 400ms;
+.toy-preview {
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.toy-preview:hover {
+  transform: translateY(-6px);
+}
+
+.toy-preview h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.toy-preview p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.toy-preview .actions,
+.toy-preview .buy {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.toy-preview button {
+  background-color: #f4a261;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.toy-preview button:hover {
+  background-color: #e76f51;
+}
+
+button.remove-btn {
+  background-color: #e63946;
+}
+button.remove-btn:hover {
+  background-color: #b5172d;
 }

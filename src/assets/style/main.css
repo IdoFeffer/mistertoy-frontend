@@ -7,6 +7,7 @@
 @import 'base/helpers.css';
 @import 'base/layout.css';
 @import 'base/forms.css';
+@import 'base/HomePage.css';
 
 /* Components */
 @import 'cmps/ToyIndex.css';
@@ -15,6 +16,7 @@
 @import 'cmps/ToggleBtn.css';
 @import 'cmps/UserMsg.css';
 @import 'cmps/Accordion.css';
+@import 'cmps/ToyDetails.css';
 
 @import 'cmps/ToyFilter.css';
 @import 'cmps/ToyList.css';

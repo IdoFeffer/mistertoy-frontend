@@ -13,13 +13,20 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     let { value, name: field, type, selectedOptions } = target
 
     if (type === "number") value = +value
+
     if (type === "select-multiple") {
       value = Array.from(selectedOptions, (option) => option.value)
     }
+
     if (field === "inStock") {
       if (value === "all") value = undefined
       else value = value === "true"
     }
+
+    if (field === 'labels' && value.includes('')) {
+      value = []
+    }
+    
 
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
@@ -61,18 +68,30 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         <label htmlFor="labels">Label:</label>
         <select
           id="labels"
-          name="label"
-          value={filterByToEdit.label || "all"}
+          name="labels"
+          multiple
+          value={filterByToEdit.labels}
           onChange={handleChange}
         >
           <option value="">All</option>
-          <option value="On-wheels">On wheels</option>
+          <option value="Updated">Updated</option>
+          <option value="Fun">Fun</option>
+          <option value="Sport">Sport</option>
+          <option value="Outdoor">Outdoor</option>
+          <option value="Mind Game">Mind Game</option>
+          <option value="Creative">Creative</option>
+          <option value="Building">Building</option>
+          <option value="Educational">Educational</option>
+          <option value="Puzzle">Puzzle</option>
+          <option value="On wheels">On wheels</option>
+          <option value="Indoor">Indoor</option>
+          <option value="Music">Music</option>
           <option value="Box game">Box game</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Art">Art</option>
-          <option value="Baby">Baby</option>
           <option value="Doll">Doll</option>
+          <option value="Fashion">Fashion</option>
           <option value="Battery Powered">Battery Powered</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Test">Test</option>
         </select>
 
         {/* Sort By */}

@@ -14,6 +14,7 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
+  
   return httpService.get(BASE_URL, filterBy)
 }
 
