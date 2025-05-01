@@ -1,8 +1,22 @@
+import meImg from "../../src/assets/img/me.jpg"
+
 export function AboutUs() {
-    return (
-        <section>
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni aperiam quo veniam velit dolor reprehenderit, laudantium consequatur neque numquam labore quae. Accusamus libero perferendis ducimus? Alias unde hic quisquam doloremque.</p>
-        </section>
-    )
+  return (
+    <div className="me">
+      <section className="about-me">
+        <h2>About Me</h2>
+        <p>
+          {" "}
+          I'm Ido Feffer, a 26-year-old Fullstack Development student, currently
+          studying at Coding Academy. I'm gaining hands-on experience with
+          modern technologies like React, Node.js, MongoDB, and responsive
+          design. The course is highly practical, project-driven, and focuses on
+          building real-world applications from frontend to backend. I'm
+          passionate about technology, creative problem-solving, and eager to
+          keep growing as a developer.
+        </p>
+        <img src={meImg} alt="Me img" className="me-img" />
+      </section>
+    </div>
+  )
 }
