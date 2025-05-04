@@ -1,0 +1,13 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    
+    img {
+        max-width: 300px;
+    }
+}
+
+// .home-page > img {
+//     max-width: 300px;
+// }
