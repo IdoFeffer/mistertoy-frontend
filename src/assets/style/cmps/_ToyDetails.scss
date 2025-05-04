@@ -1,7 +1,7 @@
 .toy-details {
   max-width: 400px;
   margin: auto;
-  padding: 2rem;
+  padding: rem(32px);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-family: "Inter", sans-serif;
@@ -9,34 +9,34 @@
 
   .price {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: rem(20px);
     color: #444;
   }
 
   h1 {
     font-family: "Pacifico", cursive;
-    font-size: 2.4rem;
-    margin-bottom: 0.5rem;
+    font-size: rem(40px);
+    margin-bottom: rem(8px);
   }
 
   p {
     margin: 0.5rem 0;
-    font-size: 1.1rem;
+    font-size: rem(17px);
   }
 
   button {
-    margin-top: 1rem;
+    margin-top: rem(16px);
     background-color: #f4a261;
     border: none;
-    color: white;
+    color: var(--gray-1);
     padding: 0.5rem 1.2rem;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: rem(16px);
     transition: background-color 0.3s ease;
-
-  }
-  button:hover {
-    background-color: #e76f51;
+    
+    &:hover {
+      background-color: #e76f51;
+    }
   }
 }

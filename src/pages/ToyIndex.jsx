@@ -78,7 +78,7 @@ export function ToyIndex() {
       <section className="main-upper-section">
         <h2>MisterToy - Toy List</h2>
 
-        <section className="toy-actions">
+        <section className="toy-actions flex">
           <Link to="/toy/edit">Add Toy</Link>
           <button className="add-btn" onClick={onAddToy}>
             Add Random Toy 🧸

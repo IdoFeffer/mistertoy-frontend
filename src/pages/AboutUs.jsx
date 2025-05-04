@@ -2,8 +2,8 @@ import meImg from "../../src/assets/img/me.jpg"
 
 export function AboutUs() {
   return (
-    <div className="me">
-      <section className="about-me">
+    <div className="me flex">
+      <section className="about-me flex-column">
         <h2>About Me</h2>
         <p>
           {" "}

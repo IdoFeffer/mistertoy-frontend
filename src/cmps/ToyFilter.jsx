@@ -32,9 +32,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
   }
 
   return (
-    <section className="toy-filter full main-layout">
+    <section className="toy-filter full main-layout flex">
 
-      <fieldset className="filter-form">
+      <fieldset className="filter-form flex">
       <legend>Toys Filter</legend>
         {/* By name */}
         <label htmlFor="name">Name:</label>

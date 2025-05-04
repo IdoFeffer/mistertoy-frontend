@@ -1,7 +1,7 @@
 .app-header {
     background-color: var(--clr1);
-    color: var(--clr1bg);
-    padding-block: 1em;
+    color: var(--gray1);
+    padding-block: rem(10px);
 
     .app-nav {
     display: flex;

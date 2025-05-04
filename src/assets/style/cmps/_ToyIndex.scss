@@ -3,18 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
 
   .toy-actions {
-    display: flex;
     flex-direction: row;
     place-items: center;
-    background-color: #fdf6e3;
-    padding: 1rem;
-    border-radius: 12px;
-    margin-block: 1rem;
+    background-color: var(--clr3);
+    padding: rem(16px);
+    margin-block: rem(16px);
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }

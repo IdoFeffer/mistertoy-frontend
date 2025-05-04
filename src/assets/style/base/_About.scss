@@ -1,15 +1,12 @@
 .me {
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 2em;
 
   .about-me {
-    display: flex;
-    flex-direction: column;
     place-items: center;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--clr1bg);
     border-radius: 16px;
     padding: 1.5em;
     max-width: 500px;

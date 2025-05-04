@@ -59,7 +59,7 @@ export function ToyEdit() {
     <section className="toy-edit">
       <h2>{toyToEdit._id ? "Edit" : "Add"} Toy</h2>
 
-      <form onSubmit={onSaveToy}>
+      <form onSubmit={onSaveToy} className="flex flex-column">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
