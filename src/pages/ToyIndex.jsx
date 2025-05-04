@@ -74,8 +74,8 @@ export function ToyIndex() {
 
   return (
     <div className="toy-index">
+      <Accordion />
       <section className="main-upper-section">
-        <Accordion />
         <h2>MisterToy - Toy List</h2>
 
         <section className="toy-actions">
