@@ -4,12 +4,12 @@
   gap: 1.5rem;
   padding: 2rem;
   background-color: #f8f9fa;
-}
 
-.toy-list li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: var(--clr1bg);
-  padding: 0.65em;
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: var(--clr1bg);
+    padding: 0.65em;
+  }
 }

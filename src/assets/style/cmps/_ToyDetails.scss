@@ -6,37 +6,37 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-family: "Inter", sans-serif;
   text-align: center;
-}
 
-.toy-details h1 {
-  font-family: "Pacifico", cursive;
-  font-size: 2.4rem;
-  margin-bottom: 0.5rem;
-}
+  .price {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #444;
+  }
 
-.toy-details p {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-}
+  h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+  }
 
-.toy-details .price {
-  font-weight: bold;
-  font-size: 1.4rem;
-  color: #444;
-}
+  p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
 
-.toy-details button {
-  margin-top: 1rem;
-  background-color: #f4a261;
-  border: none;
-  color: white;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
+  button {
+    margin-top: 1rem;
+    background-color: #f4a261;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 
-.toy-details button:hover {
-  background-color: #e76f51;
+  }
+  button:hover {
+    background-color: #e76f51;
+  }
 }

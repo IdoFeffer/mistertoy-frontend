@@ -1,9 +1,3 @@
-.upper-index {
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-}
-
 .main-upper-section {
   display: flex;
   flex-direction: column;
@@ -12,15 +6,16 @@
   gap: 1rem;
   margin-top: 1rem;
   flex-wrap: wrap;
-}
 
-.toy-actions {
-  display: flex;
-  flex-direction: column;
-  background-color: #fdf6e3;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-block: 1rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  .toy-actions {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    background-color: #fdf6e3;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-block: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
 }

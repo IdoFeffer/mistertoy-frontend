@@ -1,0 +1,23 @@
+.nice-popup {
+    background: white;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    padding: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+
+    .popup-header,
+    .popup-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .popup-main {
+      padding: 1em 0;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  }
+  

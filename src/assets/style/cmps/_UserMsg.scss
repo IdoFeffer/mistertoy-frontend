@@ -7,6 +7,12 @@
     color: white;
     border-radius: 2px;
     font-size: 1.1em;
+
+    button {
+        font-size: .8em;
+        float: right;
+        margin: .5em;
+    }
 }
 
 .user-msg.success {
@@ -15,10 +21,4 @@
 
 .user-msg.error {
     background-color: var(--clr2);
-}
-
-.user-msg button {
-    font-size: .8em;
-    float: right;
-    margin: .5em;
 }
