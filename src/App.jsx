@@ -1,3 +1,4 @@
+import { Provider } from "react-redux"
 import "./assets/style/main.scss"
 
 import {
@@ -16,9 +17,9 @@ import { ToyIndex } from "./pages/ToyIndex.jsx"
 import { ToyEdit } from "./pages/ToyEdit.jsx"
 import { ToyDetails } from "./pages/ToyDetails.jsx"
 import { UserDetails } from "./pages/UserDetails.jsx"
-import { Provider } from "react-redux"
-
+import { Dashboard } from "./pages/Dashboard.jsx"
 import { store } from "./store/store.js"
+
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
               <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
               <Route path="/toy/:toyId" element={<ToyDetails />} />
               <Route path="/user/:userId" element={<UserDetails />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
