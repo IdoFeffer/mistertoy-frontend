@@ -1,4 +1,5 @@
 import meImg from "../../src/assets/img/me.jpg"
+import { MyMap } from "../cmps/Map.jsx"
 
 export function AboutUs() {
   return (
@@ -17,6 +18,7 @@ export function AboutUs() {
         </p>
         <img src={meImg} alt="Me img" className="me-img" />
       </section>
+      <MyMap />
     </div>
   )
 }

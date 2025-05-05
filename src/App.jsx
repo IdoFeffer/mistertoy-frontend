@@ -20,7 +20,6 @@ import { UserDetails } from "./pages/UserDetails.jsx"
 import { Dashboard } from "./pages/Dashboard.jsx"
 import { store } from "./store/store.js"
 
-
 export default function App() {
   return (
     <Provider store={store}>
