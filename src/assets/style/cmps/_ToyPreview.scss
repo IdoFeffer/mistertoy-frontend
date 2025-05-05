@@ -1,5 +1,6 @@
-ul > li {
+.toy-list ul > .toy-preview li {
   transition: transform 0.4s ease, opacity 0.4s ease;
+
 }
 
 ul:has(li:hover) li:not(:hover) {

@@ -2,7 +2,18 @@
   margin: 0 auto;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
+  
+  @include for-narrow-layout {
+    @include layoutGTC($break-narrow);
+  }
 
+  @include for-normal-layout {
+    @include layoutGTC($break-normal);
+  }
+
+  @include for-wide-layout {
+    @include layoutGTC($break-wide);
+  }
 }
 
 .container {

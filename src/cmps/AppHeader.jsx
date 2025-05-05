@@ -37,7 +37,7 @@ export function AppHeader() {
       <section className="header-container">
         <h1>React Toy App</h1>
         {/* {props.children} */}
-        <nav className="app-nav">
+        <nav className="app-nav flex">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/toy">Toys</NavLink>
