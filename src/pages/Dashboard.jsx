@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { Doughnut } from "react-chartjs-2"
 import { toyService } from "../services/toy.service.js"
-import { LineChart } from '../cmps/LineChart.jsx'
+import { LineChart } from "../cmps/LineChart.jsx"
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
 
@@ -79,7 +79,7 @@ export function Dashboard() {
   }
 
   return (
-    <section className="dashboard">
+    <section style={{ width: "50vw", margin: "auto" }} className="dashboard">
       <h2>Toy Dashboard</h2>
       <Doughnut data={data} />
       <LineChart />
