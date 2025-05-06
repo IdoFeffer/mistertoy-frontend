@@ -1,7 +1,7 @@
 import { APIProvider } from "@vis.gl/react-google-maps"
 import { GoogleMap } from "./GoogleMap"
 
-const API_KEY = "AIzaSyAtjY7qqURWeVt6QT1dS50rcXVVPumesus"
+const API_KEY = "AIzaSyAtjqqURWeVt6QT1dS50rcXVVPumesus"
 
 export function MyMap() {
   return (

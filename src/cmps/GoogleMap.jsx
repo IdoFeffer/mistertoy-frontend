@@ -10,8 +10,7 @@ import {
   useMap,
 } from "@vis.gl/react-google-maps"
 
-const API_KEY = "AIzaSyAtjY7qqURWeVt6QT1dS50rcXVVPumesus"
-
+const API_KEY = "AIzaSyAtjY7qqWeVt6QT1dS50rcXVVPumesus"
 
 export const toyStores = [
   {
@@ -130,7 +129,6 @@ export function GoogleMap() {
           </AdvancedMarker>
         ))}
 
-        {/* הכפתורים בחוץ מתחת למפה */}
         <div className="map-buttons">
           {toyStores.map((store) => (
             <button key={store.name} onClick={() => onCenter(store)}>
