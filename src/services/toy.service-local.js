@@ -16,25 +16,10 @@ export const toyService = {
   getDefaultFilter,
 }
 
-// function query(filterBy = {}) {
-//   return storageService.query(STORAGE_KEY).then((toys) => {
-//     if (!filterBy.txt) filterBy.txt = ""
-//     if (filterBy.inStock !== undefined) {
-//       toys = toys.filter((toy) => toy.inStock === filterBy.inStock)
-//     }
-//     if (filterBy.labels && filterBy.labels.length) {
-//       toys = toys.filter((toy) =>
-//         filterBy.labels.every((label) => toy.labels.includes(label))
-//       )
-//     }
-    
-//     const regExp = new RegExp(filterBy.txt, "i")
-//     return toys.filter((toy) => regExp.test(toy.name))
-//   })
-// }
+async function query(filterBy = {}) {
+  try {
+    const toys = await storageService.query(STORAGE_KEY)
 
-function query(filterBy = {}) {
-  return storageService.query(STORAGE_KEY).then((toys) => {
     if (!filterBy.txt) filterBy.txt = ""
     if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
     if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
@@ -49,7 +34,6 @@ function query(filterBy = {}) {
       )
     })
 
-    // מיון
     if (filterBy.sortBy) {
       if (filterBy.sortBy === "name") {
         filteredToys.sort((a, b) => a.name.localeCompare(b.name))
@@ -61,7 +45,10 @@ function query(filterBy = {}) {
     }
 
     return filteredToys
-  })
+  } catch (err) {
+    console.error("Query failed:", err)
+    throw err
+  }
 }
 
 function getById(toyId) {
@@ -106,7 +93,7 @@ function getRandomToy() {
   return {
     toyName: "Toy-" + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(10, 300),
-    imgUrl: 'https://robohash.org/' + utilService.makeId(),
+    imgUrl: "https://robohash.org/" + utilService.makeId(),
     labels: utilService.getRandomLabels(labels),
     inStock: Math.random() > 0.3,
     createdAt: Date.now(),

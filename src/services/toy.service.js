@@ -11,16 +11,20 @@ export const toyService = {
   getDefaultFilter,
   _setNextPrevToyId,
   getEmptyToy,
-  getRandomToy
+  getRandomToy,
 }
 
 function query(filterBy = {}) {
-  
   return httpService.get(BASE_URL, filterBy)
 }
 
-function getById(toyId) {
-  return httpService.get(BASE_URL + toyId).then(_setNextPrevToyId)
+async function getById(toyId) {
+  try {
+    const toy = await httpService.get(BASE_URL + toyId)
+    return _setNextPrevToyId(toy)
+  } catch (err) {
+    console.log("Didnt get toy", err)
+  }
 }
 
 function remove(toyId) {
@@ -45,15 +49,21 @@ function getDefaultFilter() {
   }
 }
 
-function _setNextPrevToyId(toy) {
-  return httpService.get(BASE_URL).then((toys) => {
+async function _setNextPrevToyId(toy) {
+  try {
+    const toys = await httpService.get(BASE_URL)
     const toyIdx = toys.findIndex((currToy) => currToy._id === toy._id)
-    const nextToy = toys[toyIdx + 1] ? toys[toyIdx + 1] : toys[0]
-    const prevToy = toys[toyIdx - 1] ? toys[toyIdx - 1] : toys[toys.length - 1]
+    const nextToy = toys[toyIdx + 1] || toys[0]
+    const prevToy = toys[toyIdx - 1] || toys[toys.length - 1]
+
     toy.nextToyId = nextToy._id
     toy.prevToyId = prevToy._id
+
     return toy
-  })
+  } catch (err) {
+    console.error("Failed to set next/prev toy ID", err)
+    throw err
+  }
 }
 
 function getEmptyToy() {
@@ -80,7 +90,7 @@ function getRandomToy() {
   return {
     toyName: "Toy-" + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(10, 300),
-    imgUrl: 'https://robohash.org/' + utilService.makeId(),
+    imgUrl: "https://robohash.org/" + utilService.makeId(),
     labels: utilService.getRandomLabels(labels),
     inStock: Math.random() > 0.3,
     createdAt: Date.now(),

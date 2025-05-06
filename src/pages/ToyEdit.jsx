@@ -14,19 +14,19 @@ export function ToyEdit() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    async function loadToy() {
-      try {
-        const toy = await toyService.getById(toyId)
-        setToyToEdit(toy)
-      } catch (err) {
-        showErrorMsg("Couldn't load toy")
-        navigate("/toy")
-      }
-    }
-
     if (toyId) loadToy()
     else setToyToEdit(toyService.getEmptyToy())
   }, [toyId])
+  
+  async function loadToy() {
+    try {
+      const toy = await toyService.getById(toyId)
+      setToyToEdit(toy)
+    } catch (err) {
+      showErrorMsg("Couldn't load toy")
+      navigate("/toy")
+    }
+  }
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).max(50).required("Required"),

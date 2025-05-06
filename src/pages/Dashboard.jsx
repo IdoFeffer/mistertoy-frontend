@@ -12,8 +12,17 @@ export function Dashboard() {
   const [toys, setToys] = useState([])
 
   useEffect(() => {
-    toyService.query().then(setToys)
+    loadToys()
   }, [])
+
+  async function loadToys() {
+    try {
+      const toys = await toyService.query()
+      setToys(toys)
+    } catch (err) {
+      console.error("Failed to load toys:", err)
+    }
+  }
 
   function getLabelMap() {
     const map = {}
@@ -79,7 +88,7 @@ export function Dashboard() {
   }
 
   return (
-    <section  className="dashboard">
+    <section className="dashboard">
       <h2>Toy Dashboard</h2>
       <Doughnut data={data} />
       <LineChart />

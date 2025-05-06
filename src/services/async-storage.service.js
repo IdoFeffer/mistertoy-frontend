@@ -11,43 +11,54 @@ function query(entityType, delay = 500) {
   return new Promise((resolve) => setTimeout(() => resolve(entities), delay))
 }
 
-function get(entityType, entityId) {
-  return query(entityType).then((entities) => {
+async function get(entityType, entityId) {
+  try {
+    const entities = await query(entityType)
     const entity = entities.find((entity) => entity._id === entityId)
     if (!entity)
       throw new Error(
         `Get failed, cannot find entity with id: ${entityId} in: ${entityType}`
       )
     return entity
-  })
+  } catch (err) {
+    console.error("get() error:", err)
+    throw err
+  }
 }
 
-function post(entityType, newEntity) {
-  newEntity = { ...newEntity }
-  newEntity._id = _makeId()
-  return query(entityType).then((entities) => {
+async function post(entityType, newEntity) {
+  try {
+    newEntity = { ...newEntity, _id: _makeId() }
+    const entities = await query(entityType)
     entities.push(newEntity)
     _save(entityType, entities)
     return newEntity
-  })
+  } catch (err) {
+    console.error("post() error:", err)
+    throw err
+  }
 }
 
-function put(entityType, updatedEntity) {
-  return query(entityType).then((entities) => {
+async function put(entityType, updatedEntity) {
+  try {
+    const entities = await query(entityType)
     const idx = entities.findIndex((entity) => entity._id === updatedEntity._id)
     if (idx < 0)
       throw new Error(
         `Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`
       )
-
     entities.splice(idx, 1, updatedEntity)
     _save(entityType, entities)
     return updatedEntity
-  })
+  } catch (err) {
+    console.error("put() error:", err)
+    throw err
+  }
 }
 
-function remove(entityType, entityId) {
-  return query(entityType).then((entities) => {
+async function remove(entityType, entityId) {
+  try {
+    const entities = await query(entityType)
     const idx = entities.findIndex((entity) => entity._id === entityId)
     if (idx < 0)
       throw new Error(
@@ -55,10 +66,11 @@ function remove(entityType, entityId) {
       )
     entities.splice(idx, 1)
     _save(entityType, entities)
-  })
+  } catch (err) {
+    console.error("remove() error:", err)
+    throw err
+  }
 }
-
-// Private functions
 
 function _save(entityType, entities) {
   localStorage.setItem(entityType, JSON.stringify(entities))

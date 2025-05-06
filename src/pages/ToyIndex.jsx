@@ -61,9 +61,6 @@ export function ToyIndex() {
       showErrorMsg("Cannot update toy", err)
     }
 
-    saveToy(toyToSave).then((savedToy) => {
-      showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-    })
   }
 
   function addToCart(toy) {
