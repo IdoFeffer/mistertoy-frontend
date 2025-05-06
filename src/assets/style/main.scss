@@ -46,3 +46,10 @@
 main {
     flex-grow: 1;
 }
+
+body {
+    background-image: url('../../assets/img/toys.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
