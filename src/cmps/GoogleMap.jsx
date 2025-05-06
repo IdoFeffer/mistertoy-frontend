@@ -10,7 +10,8 @@ import {
   useMap,
 } from "@vis.gl/react-google-maps"
 
-const API_KEY = "AIzaSyAtjY7qqWeVt6QT1dS50rcXVVPumesus"
+const API_KEY = "AIzaSyAtjY7qqURWeVt6QT1dS50rcXVVPumesus"
+// const API_KEY = ""
 
 export const toyStores = [
   {

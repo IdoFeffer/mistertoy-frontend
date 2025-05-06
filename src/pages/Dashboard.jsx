@@ -73,13 +73,13 @@ export function Dashboard() {
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
         ],
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ],
   }
 
   return (
-    <section style={{ width: "50vw", margin: "auto" }} className="dashboard">
+    <section  className="dashboard">
       <h2>Toy Dashboard</h2>
       <Doughnut data={data} />
       <LineChart />
