@@ -1,6 +1,6 @@
 import { UserMsg } from "./UserMsg.jsx"
 import { LoginSignup } from "./LoginSignup.jsx"
-import { userService } from '../services/user.service.js'
+import { userService } from "../services/user.service.js"
 // import { userService } from '../services/user.service-local.js'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { logout } from "../store/actions/user.actions.js"
@@ -17,15 +17,15 @@ export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
   // console.log('user:', user)
 
-  function onLogout() {
-    logout()
-      .then(() => {
-        showSuccessMsg("logout successfully")
-      })
-      .catch((err) => {
-        showErrorMsg("OOPs try again", err)
-      })
+  async function onLogout() {
+    try {
+      const res = await logout()
+      showSuccessMsg("logout successfully")
+    } catch (err) {
+      showErrorMsg("OOPs try again", err)
+    }
   }
+
 
   function onToggleCart(ev) {
     ev.preventDefault()

@@ -31,39 +31,39 @@ export function ToyIndex() {
     setFilterBy(filterBy)
   }
 
-  function onRemoveToy(toyId) {
-    removeToyOptimistic(toyId)
-      .then(() => {
-        showSuccessMsg("Toy removed")
-      })
-      .catch((err) => {
-        showErrorMsg("Cannot remove toy", err)
-      })
+  async function onRemoveToy(toyId) {
+    try {
+      const res = await removeToyOptimistic(toyId)
+      showSuccessMsg("Toy removed")
+    } catch (err) {
+      showErrorMsg("Cannot remove toy", err)
+    }
   }
 
-  function onAddToy() {
-    const toyToSave = toyService.getEmptyToy()
-    saveToy(toyToSave)
-      .then((savedToy) => {
-        showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-      })
-      .catch((err) => {
-        showErrorMsg("Cannot add toy", err)
-      })
+  async function onAddToy() {
+    try {
+      const toyToSave = await toyService.getEmptyToy()
+      const savedToy = await saveToy(toyToSave)
+      showSuccessMsg(`Toy added (id: ${savedToy._id})`)
+    } catch (err) {
+      showErrorMsg("Cannot add toy", err)
+    }
   }
 
-  function onEditToy(toy) {
-    const price = +prompt("New price?", toy.price)
-    if (!price) return
-    const toyToSave = { ...toy, price }
+  async function onEditToy(toy) {
+    try {
+      const price = +prompt("New price?", toy.price)
+      if (!price) return
+      const toyToSave = { ...toy, price }
+      const savedToy = await saveToy(toyToSave)
+      showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
+    } catch (err) {
+      showErrorMsg("Cannot update toy", err)
+    }
 
-    saveToy(toyToSave)
-      .then((savedToy) => {
-        showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-      })
-      .catch((err) => {
-        showErrorMsg("Cannot update toy", err)
-      })
+    saveToy(toyToSave).then((savedToy) => {
+      showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
+    })
   }
 
   function addToCart(toy) {

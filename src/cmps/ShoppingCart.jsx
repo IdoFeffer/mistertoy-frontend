@@ -20,13 +20,12 @@ export function ShoppingCart({ isCartShown }) {
 
   function onCheckout() {
     const amount = getCartTotal()
-    checkout(amount)
-      .then(() => {
-        showSuccessMsg(`Charged you: $${amount.toLocaleString()}`)
-      })
-      .catch(() => {
-        showErrorMsg("There was a problem checking out!")
-      })
+    try {
+      checkout(amount)
+      showSuccessMsg(`Charged you: $${amount.toLocaleString()}`)
+    } catch (err) {
+      showErrorMsg("There was a problem checking out!")
+    }
   }
 
   if (!isCartShown) return null
