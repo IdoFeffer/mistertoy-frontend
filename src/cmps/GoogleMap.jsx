@@ -12,23 +12,80 @@ import {
 
 const API_KEY = "AIzaSyAtjY7qqURWeVt6QT1dS50rcXVVPumesus"
 
+
+export const toyStores = [
+  {
+    name: "כפר השעשועים תל אביב",
+    address: "דרך מנחם בגין 132, תל אביב",
+    lat: 32.0741,
+    lng: 34.7922,
+  },
+  {
+    name: "עולם הצעצועים",
+    address: "רחוב ההסתדרות 40, חיפה",
+    lat: 32.805,
+    lng: 35.0645,
+  },
+  {
+    name: "ToyLand ראשון לציון",
+    address: "שדרות לוי אשכול 103, ראשון לציון",
+    lat: 31.9823,
+    lng: 34.7754,
+  },
+  {
+    name: "צעצועי מור",
+    address: "רחוב ירושלים 17, אשדוד",
+    lat: 31.7928,
+    lng: 34.6493,
+  },
+  {
+    name: "צעצועי הדובי",
+    address: "הברוש 12, באר שבע",
+    lat: 31.2542,
+    lng: 34.799,
+  },
+  {
+    name: "טויס אר אס נתניה",
+    address: "רחוב פתח תקווה 12, נתניה",
+    lat: 32.3225,
+    lng: 34.8572,
+  },
+  {
+    name: "אצל יניב",
+    address: "הצנחנים 3, פתח תקווה",
+    lat: 32.0874,
+    lng: 34.8872,
+  },
+  {
+    name: "עידן הצעצועים",
+    address: "אבן גבירול 90, תל אביב",
+    lat: 32.0793,
+    lng: 34.7811,
+  },
+  {
+    name: "טויס פלוס",
+    address: "הנגר 4, כפר סבא",
+    lat: 32.1766,
+    lng: 34.9135,
+  },
+  {
+    name: "צעצועי יוסי",
+    address: "דרך שלמה 99, תל אביב",
+    lat: 32.0531,
+    lng: 34.7693,
+  },
+]
+
 export function GoogleMap() {
-    
+  const [markerRef, marker] = useAdvancedMarkerRef()
+  const [selectedPlace, setSelectedPlace] = useState(null)
   const [coords, setCoords] = useState({
     lat: 32.0853,
     lng: 34.7818,
   })
-  const zoom = 11
-  const [markerRef, marker] = useAdvancedMarkerRef()
-  const branches = [
-    { name: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
-    { name: "Haifa", lat: 32.794, lng: 34.9896 },
-    { name: "Jerusalem", lat: 31.7683, lng: 35.2137 },
-    { name: "New York", lat: 40.7128, lng: -74.006 },
-    { name: "Tokyo", lat: 35.6762, lng: 139.6503 },
-  ]
 
-  const map = useMap()
+  const zoom = 11
+  const style = { width: "100%", height: "70vh" }
 
   function onMapClick(ev) {
     const newCoords = ev.detail.latLng
@@ -36,16 +93,55 @@ export function GoogleMap() {
     ev.map.panTo(newCoords)
   }
 
-  function onCenter(ev) {
-    const startCoords = {
-      lat: 32.0853,
-      lng: 34.7818,
+  function MapContent() {
+    const map = useMap()
+
+    function onCenter(place) {
+      if (!map) return
+      const newCoords = { lat: place.lat, lng: place.lng }
+      setCoords(newCoords)
+      map.panTo(newCoords)
     }
-    map.panTo(startCoords)
-    setCoords(startCoords)
+
+    function onPlaceClick(place) {
+      setCoords({ lat: place.lat, lng: place.lng })
+      setSelectedPlace(place)
+      map.panTo({ lat: place.lat, lng: place.lng })
+    }
+
+    return (
+      <>
+        {toyStores.map((place) => (
+          <AdvancedMarker
+            key={place.name}
+            position={{ lat: place.lat, lng: place.lng }}
+            onClick={() => onPlaceClick(place)}
+          >
+            <Pin background="blue" borderColor="green" glyphColor="red" />
+            {selectedPlace?.name === place.name && (
+              <InfoWindow
+                position={{ lat: place.lat, lng: place.lng }}
+                onCloseClick={() => setSelectedPlace(null)}
+              >
+                <h2>{place.name}</h2>
+                <p style={{ color: "black" }}>{place.address}</p>
+              </InfoWindow>
+            )}
+          </AdvancedMarker>
+        ))}
+
+        {/* הכפתורים בחוץ מתחת למפה */}
+        <div className="map-buttons">
+          {toyStores.map((store) => (
+            <button key={store.name} onClick={() => onCenter(store)}>
+              {store.name}
+            </button>
+          ))}
+        </div>
+      </>
+    )
   }
 
-  const style = { width: "100%", height: "70vh" }
   return (
     <section style={style} className="google-map">
       <APIProvider apiKey={API_KEY}>
@@ -53,28 +149,13 @@ export function GoogleMap() {
           defaultZoom={zoom}
           mapId="main-map"
           defaultCenter={coords}
-          gestureHandling={"greedy"}
+          gestureHandling="greedy"
           disableDefaultUI={true}
           onClick={onMapClick}
         >
-          {/* <Marker position={coords} /> */}
-          {/* <InfoWindow anchor={marker}>
-                        The content of the info window is here❗️
-                    </InfoWindow> */}
-          {branches.map((branch) => (
-            <button key={branch.name} onClick={() => onCenter(branch)}>
-              {branch.name}
-            </button>
-          ))}
-
-          <AdvancedMarker ref={markerRef} position={coords}>
-            {/* <Pin background={'dodgerblue'} glyphColor={'hotpink'} borderColor={'black'} /> */}
-            <div style={{ fontSize: "30px" }}>👆</div>
-          </AdvancedMarker>
+          <MapContent />
         </Map>
       </APIProvider>
-
-      <button onClick={onCenter}>Center</button>
     </section>
   )
 }
