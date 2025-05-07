@@ -26,7 +26,6 @@ export function AppHeader() {
     }
   }
 
-
   function onToggleCart(ev) {
     ev.preventDefault()
     dispatch({ type: TOGGLE_CART_IS_SHOWN })
@@ -40,7 +39,7 @@ export function AppHeader() {
         <nav className="app-nav flex">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/Dashboard">Dashboard</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/toy">Toys</NavLink>
           <a onClick={onToggleCart} href="#">
             🛒 Cart
@@ -49,9 +48,13 @@ export function AppHeader() {
       </section>
       {user ? (
         <section>
-          <span to={`/user/${user._id}`}>
+          {/* <span to={`/user/${user._id}`}>
             Hello {user.fullname} <span>${user.score.toLocaleString()}</span>
-          </span>
+          </span> */}
+          <NavLink to={`/user/${user._id}`}>
+            Hello {user.fullname} <span>${user.score.toLocaleString()}</span>
+          </NavLink>
+
           <button onClick={onLogout}>Logout</button>
         </section>
       ) : (

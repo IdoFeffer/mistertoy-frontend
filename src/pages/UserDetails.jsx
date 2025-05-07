@@ -36,7 +36,7 @@ export function UserDetails() {
       {isMyProfile && (
         <section className="my-profile-info">
           <h4>🛍️ My Shopping Info:</h4>
-          <p>(Here you can show toys bought, cart items, etc... בהמשך)</p>
+          <p>Toy to show..</p>
         </section>
       )}
 
