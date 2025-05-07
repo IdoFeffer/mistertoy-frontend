@@ -3,6 +3,18 @@ import { CLEAR_CART } from "../reducers/toy.reducer.js"
 import { SET_USER, SET_USER_SCORE } from "../reducers/user.reducer.js"
 import { store } from "../store.js"
 
+export async function loadUsers() {
+  try {
+      store.dispatch({ type: LOADING_START })
+      const users = await userService.getUsers()
+      store.dispatch({ type: SET_USERS, users })
+  } catch (err) {
+      console.log('UserActions: err in loadUsers', err)
+  } finally {
+      store.dispatch({ type: LOADING_DONE })
+  }
+}
+
 export async function login(credentials) {
   try {
     const user = await userService.login(credentials)

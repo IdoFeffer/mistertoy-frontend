@@ -19,6 +19,7 @@ import { ToyDetails } from "./pages/ToyDetails.jsx"
 import { UserDetails } from "./pages/UserDetails.jsx"
 import { Dashboard } from "./pages/Dashboard.jsx"
 import { store } from "./store/store.js"
+import { ReviewIndex } from './pages/ReviewIndex.jsx'
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/toy/edit" element={<ToyEdit />} />
               <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
               <Route path="/toy/:toyId" element={<ToyDetails />} />
+              <Route path="review" element={<ReviewIndex />} />
               <Route path="/user/:userId" element={<UserDetails />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/" />} />
