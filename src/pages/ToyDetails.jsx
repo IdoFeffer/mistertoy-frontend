@@ -34,6 +34,15 @@ export function ToyDetails() {
       <p>In Stock: {toy.inStock ? "Yes" : "No"}</p>
       <p>Labels: {toy.labels?.join(", ") || "No labels"}</p>
       <p>Created At: {new Date(toy.createdAt).toLocaleDateString()}</p>
+      <p>Messeges:</p>
+      {toy.msgs &&
+        toy.msgs.map((msg) => (
+          <div key={msg.id || msg.txt}>
+            <p>
+              {msg.by.fullname}: {msg.txt}
+            </p>
+          </div>
+        ))}
       <button onClick={() => setIsChatOpen(true)}>💬 Chat</button>
       {isChatOpen && (
         <NicePopup
