@@ -27,23 +27,23 @@ export function ToyDetails() {
       navigate("/toy")
     }
   }
-
-  function handleSendMsg(ev) {
+  
+  async function handleSendMsg(ev) {
     ev.preventDefault()
     if (!msgTxt) return
   
-    toyService.addMsg(toy._id, { txt: msgTxt })
-      .then((newMsg) => {
-        setToy(prevToy => ({
-          ...prevToy,
-          msgs: [...prevToy.msgs, newMsg]
-        }))
-        setMsgTxt("")
-      })
-      .catch((err) => {
-        console.error("Failed to send msg", err)
-      })
+    try {
+      const newMsg = await toyService.addMsg(toy._id, { txt: msgTxt })
+      setToy(prevToy => ({
+        ...prevToy,
+        msgs: [...prevToy.msgs, newMsg]
+      }))
+      setMsgTxt("")
+    } catch (err) {
+      console.error("Failed to send msg", err)
+    }
   }
+  
 
   if (!toy) return <div>Loading...</div>
 

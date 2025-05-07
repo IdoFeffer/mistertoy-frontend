@@ -1,9 +1,4 @@
-.toy-list ul > .toy-preview li {
-  transition: transform 0.4s ease, opacity 0.4s ease;
-
-}
-
-ul:has(li:hover) li:not(:hover) {
+.toy-list:has(li:hover) > li:not(:hover) {
   transform: scale(0.9);
   opacity: 0.6;
 }
@@ -54,10 +49,3 @@ ul:has(li:hover) li:not(:hover) {
   justify-content: center;
   gap: 0.5rem;
 }
-
-// button.remove-btn {
-//   background-color: #e63946;
-// }
-// button.remove-btn:hover {
-//   background-color: #b5172d;
-// }
