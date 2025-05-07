@@ -12,6 +12,7 @@ export const toyService = {
   _setNextPrevToyId,
   getEmptyToy,
   getRandomToy,
+  addMsg
 }
 
 function query(filterBy = {}) {
@@ -95,4 +96,8 @@ function getRandomToy() {
     inStock: Math.random() > 0.3,
     createdAt: Date.now(),
   }
+}
+
+function addMsg(toyId, msg) {
+  return httpService.post(`toy/${toyId}/msg`, msg)
 }

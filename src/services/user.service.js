@@ -12,7 +12,7 @@ export const userService = {
   getById,
   getLoggedinUser,
   updateScore,
-  getEmptyCredentials,
+  getEmptyCredentials
 }
 
 async function login({ username, password }) {
