@@ -1,4 +1,5 @@
 import { userService } from "../../services/user.service.js"
+import { LOADING_DONE, LOADING_START } from "../reducers/system.reducer.js"
 import { CLEAR_CART } from "../reducers/toy.reducer.js"
 import { SET_USER, SET_USER_SCORE } from "../reducers/user.reducer.js"
 import { store } from "../store.js"
@@ -7,7 +8,7 @@ export async function loadUsers() {
   try {
       store.dispatch({ type: LOADING_START })
       const users = await userService.getUsers()
-      store.dispatch({ type: SET_USERS, users })
+      store.dispatch({ type: SET_USER, users })
   } catch (err) {
       console.log('UserActions: err in loadUsers', err)
   } finally {

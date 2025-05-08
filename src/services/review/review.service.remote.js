@@ -7,14 +7,15 @@ export const reviewService = {
 }
 
 function query(filterBy) {
-	var queryStr = !filterBy ? '' : `?name=${filterBy.name}&sort=anaAref`
-	return httpService.get(`review${queryStr}`)
+	// console.log(filterBy);
+	var queryStr = !filterBy ? '' : `?aboutToyId=${filterBy.aboutToyId}`
+	return httpService.get(`review${queryStr}`)	
 }
 
 async function remove(reviewId) {
 	await httpService.delete(`review/${reviewId}`)
 }
 
-async function add({ txt, aboutUserId }) {
-	return await httpService.post(`review`, { txt, aboutUserId })
+async function add({ txt, aboutToyId }) {
+	return await httpService.post(`review`, { txt, aboutToyId })
 }

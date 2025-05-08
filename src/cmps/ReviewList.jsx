@@ -2,7 +2,8 @@
 import { userService } from '../services/user.service.js'
 import { ReviewPreview } from './ReviewPreview.jsx'
 
-export function ReviewList({ reviews, onRemoveReview }) {
+// export function ReviewList({ reviews, onRemoveReview }) {
+export function ReviewList({ reviews }) {
     
     function shouldShowActionBtns(review) {
         const user = userService.getLoggedinUser()
@@ -17,9 +18,9 @@ export function ReviewList({ reviews, onRemoveReview }) {
             {reviews.map(review =>
                 <li key={review._id}>
                     <ReviewPreview review={review}/>
-                    {shouldShowActionBtns(review) && <div className="actions">
+                    {/* {shouldShowActionBtns(review) && <div className="actions">
                         <button onClick={() => onRemoveReview(review._id)}>x</button>
-                    </div>}
+                    </div>} */}
                 </li>)
             }
         </ul>

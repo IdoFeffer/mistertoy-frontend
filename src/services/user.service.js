@@ -12,7 +12,13 @@ export const userService = {
   getById,
   getLoggedinUser,
   updateScore,
-  getEmptyCredentials
+  getEmptyCredentials,
+  getUsers
+
+}
+
+function getUsers() {
+	return httpService.get(`user`)
 }
 
 async function login({ username, password }) {

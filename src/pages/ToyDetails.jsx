@@ -5,7 +5,13 @@ import { NicePopup } from "../cmps/NicePopup.jsx"
 import { Chat } from "../cmps/Chat.jsx"
 import { userService } from "../services/user.service.js"
 
+import { ReviewEdit } from "../cmps/ReviewEdit.jsx"
+import { ReviewList } from "../cmps/ReviewList.jsx"
+import { useSelector } from "react-redux"
+import { loadReviews } from "../store/actions/review.actions.js"
+
 export function ToyDetails() {
+  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
   const [toy, setToy] = useState(null)
   const [isChatOpen, setIsChatOpen] = useState(false)
   const { toyId } = useParams()
@@ -15,7 +21,10 @@ export function ToyDetails() {
   const loggedInUser = userService.getLoggedinUser()
 
   useEffect(() => {
-    if (toyId) loadToy()
+    if (toyId) {
+      loadToy()
+      loadReviews({aboutToyId: toyId})
+    }
   }, [toyId])
 
   async function loadToy() {
@@ -27,23 +36,23 @@ export function ToyDetails() {
       navigate("/toy")
     }
   }
+
   
   async function handleSendMsg(ev) {
     ev.preventDefault()
     if (!msgTxt) return
-  
+
     try {
       const newMsg = await toyService.addMsg(toy._id, { txt: msgTxt })
-      setToy(prevToy => ({
+      setToy((prevToy) => ({
         ...prevToy,
-        msgs: [...prevToy.msgs, newMsg]
+        msgs: [...prevToy.msgs, newMsg],
       }))
       setMsgTxt("")
     } catch (err) {
       console.error("Failed to send msg", err)
     }
   }
-  
 
   if (!toy) return <div>Loading...</div>
 
@@ -67,7 +76,6 @@ export function ToyDetails() {
           </ul>
         </section>
       )}
-
       {loggedInUser && (
         <form onSubmit={handleSendMsg} className="send-msg-form">
           <input
@@ -79,7 +87,6 @@ export function ToyDetails() {
           <button>Send</button>
         </form>
       )}
-      
       <button onClick={() => setIsChatOpen(true)}>💬 Chat</button>
       {isChatOpen && (
         <NicePopup
@@ -92,6 +99,9 @@ export function ToyDetails() {
       )}
       <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
       <Link to="/toy">Back</Link>
+
+      <ReviewEdit />
+      <ReviewList reviews={reviews}/>
     </section>
   )
 }
